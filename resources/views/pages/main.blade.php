@@ -21,6 +21,12 @@
              </div>
         @endif
 
+        @if(session()->has('message'))
+        <div class="alert alert-success">
+        {{ session()->get('message') }}
+        </div>
+        @endif
+
 
         <form action="{{route('admin.main.update')}}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -41,7 +47,7 @@
 
             <div class=" ">
                 <label for="sub_title" class="fw-bold">Sub_title</label>
-                <input type="text" name="sub_title" class="form-control" value="{{$data->title}}">
+                <input type="text" name="sub_title" class="form-control" value="{{$data->sub_title}}">
             </div>
 
             <div class="my-3">

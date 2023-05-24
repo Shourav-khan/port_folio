@@ -78,7 +78,28 @@ class frontMainPageController extends Controller
 
         ]);
 
-        return redirect()->route('main.page');
+        $main = Frontmain::first();
+
+        $main->title = $request->title;
+        $main->sub_title = $request->sub_title;
+
+        if($request->file('bc_img')){
+
+            $var1 = $request->file('bc_img');
+            $var1->storeAs('public/img/','bc_img'.$var1->getClientOriginalExtension());
+            $main->bc_img = 'storage/img/bc_img.'. $var1->getClientOriginalExtension();
+        }
+
+        if($request->file('resume')){
+
+            $var2 = $request->file('resume');
+            $var2->storeAs('public/pdf/','resume'.$var2->getClientOriginalExtension());
+            $main->resume = 'storage/pdf/resume.'. $var2->getClientOriginalExtension();
+        }
+
+        $main->save();
+
+        return redirect()->route('main.page')->with('success','Added Successfully');
     }
 
     /**
