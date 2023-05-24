@@ -21,9 +21,9 @@
              </div>
         @endif
 
-        @if(session()->has('message'))
+        @if(session()->has('success'))
         <div class="alert alert-success">
-        {{ session()->get('message') }}
+        {{ session()->get('success') }}
         </div>
         @endif
 

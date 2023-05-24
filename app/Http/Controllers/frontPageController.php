@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Frontmain;
 use Illuminate\Http\Request;
 
 class frontPageController extends Controller
@@ -13,7 +14,9 @@ class frontPageController extends Controller
      */
     public function index()
     {
-        return view('pages.frontend');
+
+        $main = Frontmain::first();
+        return view('pages.frontend',compact('main'));
     }
 
 

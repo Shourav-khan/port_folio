@@ -3,6 +3,7 @@
 use App\Http\Controllers\frontMainPageController;
 use App\Http\Controllers\frontPageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\serviceController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -15,6 +16,7 @@ Route::get('/', [frontPageController::class,'index'])->name('front.page');
 Route::get('/admin/dashboard', [frontPageController::class,'dashboard'])->name('dashboard.page');
 Route::get('/admin/main', [frontMainPageController::class,'index'])->name('main.page');
 Route::put('admin/main', [frontMainPageController::class,'update'])->name('admin.main.update');
+Route::get('admin/service/create', [serviceController::class,'create'])->name('admin.service.create');
 
 
 Route::get('/dashboard', function () {

@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Frontmain;
 use Illuminate\Http\Request;
 
-class frontMainPageController extends Controller
+class serviceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +13,7 @@ class frontMainPageController extends Controller
      */
     public function index()
     {
-
-        $data = Frontmain::first();
-        return view('pages.main',compact('data'));
+        //
     }
 
     /**
@@ -26,7 +23,7 @@ class frontMainPageController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.service.create');
     }
 
     /**
@@ -69,37 +66,9 @@ class frontMainPageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            
-            'title'=>'required|string',
-            'sub_title'=>'required|string'
-
-        ]);
-
-        $main = Frontmain::first();
-
-        $main->title = $request->title;
-        $main->sub_title = $request->sub_title;
-
-        if($request->file('bc_img')){
-
-            $var1 = $request->file('bc_img');
-            $var1->storeAs('public/img/','bc_img.'.$var1->getClientOriginalExtension());
-            $main->bc_img = 'storage/img/bc_img.'. $var1->getClientOriginalExtension();
-        }
-
-        if($request->file('resume')){
-
-            $var2 = $request->file('resume');
-            $var2->storeAs('public/pdf/','resume.'.$var2->getClientOriginalExtension());
-            $main->resume = 'storage/pdf/resume.'. $var2->getClientOriginalExtension();
-        }
-
-        $main->save();
-
-        return redirect()->route('main.page')->with('success',"Added Successfully");
+        //
     }
 
     /**
