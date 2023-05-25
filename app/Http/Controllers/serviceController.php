@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class serviceController extends Controller
@@ -11,9 +12,11 @@ class serviceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function list()
     {
-        //
+
+        $services = Service::first();
+        return view('pages.service.list',compact('services'));
     }
 
     /**
@@ -34,7 +37,23 @@ class serviceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            
+            'icon'=>'required|string',
+            'title'=>'required|string',
+            'description'=>'required|string'
+
+        ]);
+
+        $services = new Service;
+
+        $services->icon = $request->icon;
+        $services->title = $request->title;
+        $services->description = $request->description;
+
+        $services->save();
+
+        return redirect()->route('admin.service.create')->with('success','Service Create Successfull');
     }
 
     /**

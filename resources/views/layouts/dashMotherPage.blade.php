@@ -79,7 +79,7 @@
                                         <nav class="sb-sidenav-menu-nested nav">
 
                                             <a class="nav-link" href="{{route('admin.service.create')}}">Create</a>
-                                            <a class="nav-link" href="register.html">List</a>
+                                            <a class="nav-link" href="{{route('admin.service.list')}}">List</a>
                                             
                                         </nav>
                                     </div>
