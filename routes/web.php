@@ -19,6 +19,9 @@ Route::put('admin/main', [frontMainPageController::class,'update'])->name('admin
 Route::get('admin/service/create', [serviceController::class,'create'])->name('admin.service.create'); //this create is a page
 Route::post('admin/service/store', [serviceController::class,'store'])->name('admin.service.create.all');
 Route::get('admin/service/list', [serviceController::class,'list'])->name('admin.service.list');
+Route::get('admin/service/edit/{id}', [serviceController::class,'edit'])->name('admin.service.edit');
+Route::post('admin/service/update/{id}', [serviceController::class,'update'])->name('admin.service.update');
+Route::delete('admin/service/destroy/{id}', [serviceController::class,'destroy'])->name('admin.service.destroy');
 
 
 Route::get('/dashboard', function () {

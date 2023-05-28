@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Frontmain;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class frontPageController extends Controller
@@ -16,7 +17,8 @@ class frontPageController extends Controller
     {
 
         $main = Frontmain::first();
-        return view('pages.frontend',compact('main'));
+        $services = Service::all();
+        return view('pages.frontend',compact('main','services'));
     }
 
 

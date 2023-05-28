@@ -11,6 +11,22 @@
            
         </ol>
 
+          @if ($errors->any())
+            <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+             </div>
+        @endif
+
+        @if(session()->has('success'))
+        <div class="alert alert-success">
+        {{ session()->get('success') }}
+        </div>
+        @endif
+
         <table class="table table-dark table-hover">
             <thead>
               <tr>
@@ -18,19 +34,38 @@
                 <th scope="col">Icon</th>
                 <th scope="col">Title</th>
                 <th scope="col">Description</th>
+                <td class="">Action</td>
               </tr>
             </thead>
             <tbody>
 
                 
-                @foreach ($services as $service)
+                @foreach ($var as $service)
                 <tr>
 
 
-                    <th>{{$service->id}}</th>
+                    <th scope="row">{{$service->id}}</th>
                     <td>{{$service->icon}}</td>
                     <td>{{$service->title}}</td>
                     <td>{{$service->description}}</td>
+                    <td class="">
+                      <div class="row">
+                        <div class="col-sm-2 mx-3">
+                          <a href="{{route('admin.service.edit', $service->id)}}" class="btn btn-primary">Edit</a>
+                        </div>
+                        <div class="col-sm-2" >
+                         <form action="{{route('admin.service.destroy',$service->id)}}" method="POST">
+                          @csrf
+                          @method('DELETE')
+
+                          <input type="submit" name="submit" value="delete" class="btn btn-danger">
+
+                        </form>
+                        </div>
+
+                        
+                      </div>
+                    </td>
                     
                     
                   </tr>

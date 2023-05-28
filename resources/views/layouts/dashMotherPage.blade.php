@@ -47,7 +47,7 @@
                                 Dashboard
                             </a>
 
-                            <a class="nav-link" href="{{route('front.page')}}">
+                            <a class="nav-link" href="{{route('front.page')}}" target="_blank">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                Sites
                             </a>
