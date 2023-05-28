@@ -68,7 +68,7 @@
                             </a>
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
                                 Services
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
@@ -88,10 +88,26 @@
                                 </nav>
                             </div>
 
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages2" aria-expanded="false" aria-controls="collapsePages2">
                                 <div class="sb-nav-link-icon"><i class="fas fa-image"></i></div>
                                Portfolio
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
+                            <div class="collapse" id="collapsePages2" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                   
+                                    <div class="collapse" id="collapsePages2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+
+                                            <a class="nav-link" href="{{route('admin.portfolio.create')}}">Create</a>
+                                            <a class="nav-link" href="">List</a>
+                                            
+                                        </nav>
+                                    </div>
+                                  
+                                   
+                                </nav>
+                            </div>
 
                             <a class="nav-link" href="index.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-delopes"></i></div>
