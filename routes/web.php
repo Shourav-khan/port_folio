@@ -28,6 +28,7 @@ Route::prefix('admin')->group(function(){
     Route::delete('/service/destroy/{id}', [serviceController::class,'destroy'])->name('admin.service.destroy');
 
     Route::get('/portfolio/create', [portfolioController::class,'create'])->name('admin.portfolio.create');
+    Route::post('/portfolio/store', [portfolioController::class,'store'])->name('admin.portfolio.create.all');
 
 
 

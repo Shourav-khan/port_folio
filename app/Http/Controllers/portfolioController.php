@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Portfolio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class portfolioController extends Controller
 {
@@ -34,7 +36,33 @@ class portfolioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+
+            'title'=>'required|string',
+            'description'=>'required|string',
+            'big_img'=>'required|image',
+            'small_img'=>'required|image',
+            'category'=>'required|string'
+        ]);
+
+        $portfolio = new Portfolio;
+        $portfolio->title = $request->title;
+        $portfolio->description = $request->description ;
+        $portfolio->category = $request->category ;
+
+        $port1 = $request->file('big_img');
+        Storage::putFile('public/img/', $port1);
+        $portfolio->big_img = "storage/img/".$port1->hashName();
+
+        $port2 = $request->file('small_img');
+        Storage::putFile('public/img/', $port2);
+        $portfolio->small_img = "storage/img/".$port2->hashName();
+
+        $portfolio->save();
+
+    return redirect()->route('admin.portfolio.create')->with('success','Save SUCCCESSFULLy');
+
+
     }
 
     /**

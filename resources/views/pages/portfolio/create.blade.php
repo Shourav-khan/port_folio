@@ -28,21 +28,22 @@
         @endif
 
 
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="{{route('admin.portfolio.create.all')}}" method="POST" enctype="multipart/form-data">
             @csrf
+           
           
          <div class="container-fluid form-control">
         <div class="row justify-content-center mt-4">
 
             <div class="form-group col-md-4">
                 <span class="fw-bold">Big Image</span>
-                <img src="" style="height: 30vh">
+                <img src="{{asset('assets/img/big_img.jpg')}}" style="height: 30vh">
                 <input type="file" class="mt-2" name="big_img" id="big_img">
             </div>
 
-             <div class="form-group col-md-4">
+             <div class="form-group col-md-3">
                 <span class="fw-bold">Small Image</span>
-                <img src="" style="height: 30vh">
+                <img src="{{asset('assets/img/small_img.jpg')}}" style="height: 20vh">
                 <input type="file" class="mt-2" name="small_img" id="small_img">
             </div>
 
