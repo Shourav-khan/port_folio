@@ -31,30 +31,39 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Icon</th>
                 <th scope="col">Title</th>
                 <th scope="col">Description</th>
+                <th scope="col">Category</th>
+                <th scope="col">Big Image</th>
+                <th scope="col">Small Image</th>
                 <td class="">Action</td>
               </tr>
             </thead>
             <tbody>
 
                 
-                @foreach ($var as $service)
+                @foreach ($portfolios as $port)
                 <tr>
 
 
-                    <th scope="row">{{$service->id}}</th>
-                    <td>{{$service->icon}}</td>
-                    <td>{{$service->title}}</td>
-                    <td>{{$service->description}}</td>
+                    <th scope="row">{{$port->id}}</th>
+                    <td>{{$port->title}}</td>
+                    <td>{{$port->description}}</td>
+                    <td>{{$port->category}}</td>
+                    <td class="">
+                      <img src="{{url($port->big_img)}}" alt="big_img" class="" style="height: 10vh">
+                    </td>
+
+                    <td class="">
+                      <img src="{{url($port->small_img)}}" alt="small_img" class="" style="height: 10vh">
+                    </td>
                     <td class="">
                       <div class="row">
                         <div class="col-sm-2 mx-3">
-                          <a href="{{route('admin.service.edit', $service->id)}}" class="btn btn-primary">Edit</a>
+                          <a href="{{route('admin.portfolio.edit', $port->id)}}" class="btn btn-primary">Edit</a>
                         </div>
                         <div class="col-sm-2" >
-                         <form action="{{route('admin.service.destroy',$service->id)}}" method="POST">
+                         <form action="{{route('admin.portfolio.destroy', $port->id)}}" method="POST">
                           @csrf
                           @method('DELETE')
 

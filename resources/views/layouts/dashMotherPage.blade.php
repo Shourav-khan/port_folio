@@ -100,7 +100,7 @@
                                         <nav class="sb-sidenav-menu-nested nav">
 
                                             <a class="nav-link" href="{{route('admin.portfolio.create')}}">Create</a>
-                                            <a class="nav-link" href="">List</a>
+                                            <a class="nav-link" href="{{route('admin.portfolio.list')}}">List</a>
                                             
                                         </nav>
                                     </div>

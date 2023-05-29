@@ -14,39 +14,54 @@
       
 
 
-        <form action="{{route('admin.service.update', $service->id)}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('admin.portfolio.update', $ports->id)}}" method="POST" enctype="multipart/form-data">
          @csrf
+         @method('PUT')
            
          
          <div class="container-fluid form-control">
-        <div class="row justify-content-center mt-4">
-           
-            <div class="form-group col-md-3">
-
-            <div class="">
-                <label for="icon" class="fw-bold">Font Awesome Icon</label>
-                <input type="text" name="icon" id="icon" class="form-control" value="{{$service->icon}}"> 
-            </div>
-
-            <div class=" ">
-                <label for="title" class="fw-bold">title</label>
-                <input type="text" name="title" id="title" class="form-control" value="{{$service->title}}">
-            </div>
-
-            <div class="my-3">
-                <label for="description" class="fw-bold">Description</label>
-                <textarea type="file" name="description" id="description" class="form-control" cols="30" rows="10" >{{$service->description}}</textarea>
-            </div>
-    </div>
-
-        </div>
-
-        <div class="text-center">
-                  <input type="submit" name="submit" class="btn btn-danger mt-5">
+            <div class="row justify-content-center mt-4">
+    
+                <div class="form-group col-md-4">
+                    <span class="fw-bold">Big Image</span>
+                    <img src="{{url($ports->big_img)}}" style="height: 30vh">
+                    <input type="file" class="mt-2" name="big_img" id="big_img">
                 </div>
-
-           
-        </div>
+    
+                 <div class="form-group col-md-3">
+                    <span class="fw-bold">Small Image</span>
+                    <img src="{{url($ports->big_img)}}" style="height: 20vh">
+                    <input type="file" class="mt-2" name="small_img" id="small_img">
+                </div>
+    
+                <div class="form-group col-md-3">
+    
+                <div class="">
+                    <label for="title" class="fw-bold">Title</label>
+                    <input type="text" name="title" class="form-control" value="{{$ports->title}}">
+                </div>
+    
+                <div class=" ">
+                    <label for="description" class="fw-bold">Description</label>
+                    <input type="text" name="description" class="form-control" value="{{$ports->description}}">
+                </div>
+    
+                <div class=" ">
+                    <label for="category" class="fw-bold">Category</label>
+                    <input type="text" name="category" class="form-control" value="{{$ports->category}}">
+                </div>
+    
+    
+              
+            </div>
+             </div>
+    
+            <div class="text-center">
+                      <input type="submit" name="submit" class="btn btn-primary mt-5">
+                    </div>
+    
+               
+            </div>
 
     </form>
 </main>

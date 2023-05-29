@@ -29,7 +29,10 @@ Route::prefix('admin')->group(function(){
 
     Route::get('/portfolio/create', [portfolioController::class,'create'])->name('admin.portfolio.create');
     Route::post('/portfolio/store', [portfolioController::class,'store'])->name('admin.portfolio.create.all');
-
+    Route::get('/portfolio/list', [portfolioController::class,'list'])->name('admin.portfolio.list');
+    Route::get('/portfolio/edit/{id}', [portfolioController::class,'edit'])->name('admin.portfolio.edit');
+    Route::put('/portfolio/update/{id}', [portfolioController::class,'update'])->name('admin.portfolio.update');
+    Route::delete('/portfolio/destroy/{id}', [portfolioController::class,'destroy'])->name('admin.portfolio.destroy');
 
 
 

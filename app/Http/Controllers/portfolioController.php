@@ -13,9 +13,10 @@ class portfolioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function list()
     {
-        //
+        $portfolios = Portfolio::all();
+        return view('pages.portfolio.list' , compact('portfolios'));
     }
 
     /**
@@ -60,7 +61,7 @@ class portfolioController extends Controller
 
         $portfolio->save();
 
-    return redirect()->route('admin.portfolio.create')->with('success','Save SUCCCESSFULLy');
+    return redirect()->route('admin.portfolio.create')->with('success','Save SUCCCESSFULLY');
 
 
     }
@@ -84,7 +85,9 @@ class portfolioController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $ports = Portfolio::find($id);
+        return view('pages.portfolio.edit',compact('ports'));
     }
 
     /**
@@ -96,7 +99,37 @@ class portfolioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+
+            'title'=>'required|string',
+            'description'=>'required|string',
+            'category'=>'required|string'
+        ]);
+
+        $portfolio = Portfolio::find($id);
+        $portfolio->title = $request->title;
+        $portfolio->description = $request->description ;
+        $portfolio->category = $request->category ;
+
+        if($request->file('big_img')){
+        $port1 = $request->file('big_img');
+        Storage::putFile('public/img/', $port1);
+        $portfolio->big_img = "storage/img/".$port1->hashName();
+        }
+
+        if($request->file('small_img')){
+
+            $port2 = $request->file('small_img');
+            Storage::putFile('public/img/', $port2);
+            $portfolio->small_img = "storage/img/".$port2->hashName();
+        }
+
+       
+
+        $portfolio->save();
+
+    return redirect()->route('admin.portfolio.list')->with('success','Edit SUCCCESSFULLY');
+
     }
 
     /**
@@ -107,6 +140,11 @@ class portfolioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $portfolios = Portfolio::find($id);
+        @unlink(public_path($portfolios->big_img));
+        @unlink(public_path($portfolios->small_img));
+        $portfolios->delete();
+
+         return redirect()->route('admin.portfolio.list')->with('success','Portfolio Delete Successfull');
     }
 }
