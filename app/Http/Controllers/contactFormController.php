@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class contactFormController extends Controller
 {
     public function store(){
-        return request()->all();
+        
+        $contact_form_data =  request()->all();
     }
 }
