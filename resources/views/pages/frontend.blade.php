@@ -88,8 +88,9 @@
         </section>
         <!-- Portfolio-->
         @foreach ($portfolio as $port)
-        <div id="portfolio">
+        <div id="portfolio mb-5">
             <div class="container-fluid p-0">
+                 <h2 class="text-center  mt-0">Portfolios</h2>
                 <div class="row g-0">
                     <div class="col-lg-4 col-sm-6">
                         <a class="portfolio-box" href="{{url($port->small_img)}}" title="Project Name">
@@ -99,12 +100,7 @@
                                 <div class="project-name">{{$port->title}}</div>
                             </div>
                         </a>
-                    </div>
-                   
-                    
-                   
-                   
-                   
+                    </div>                 
                 </div>
             </div>
         </div>
@@ -136,29 +132,34 @@
                         <!-- To make this form functional, sign up at-->
                         <!-- https://startbootstrap.com/solution/contact-forms-->
                         <!-- to get an API token!-->
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                       
+                       
+                        {{-- data-sb-form-api-token="API_TOKEN" --}}
+
+                        <form id="contactForm" action="{{route('contact.store')}}" method="POST">
+                            @csrf
                             <!-- Name input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                                <input class="form-control" id="name" name="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
                                 <label for="name">Full name</label>
                                 <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                             </div>
                             <!-- Email address input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
+                                <input class="form-control" id="email" name="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
                                 <label for="email">Email address</label>
                                 <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
                                 <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
                             </div>
                             <!-- Phone number input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
+                                <input class="form-control" id="phone" name="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
                                 <label for="phone">Phone number</label>
                                 <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
                             </div>
                             <!-- Message input-->
                             <div class="form-floating mb-3">
-                                <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
+                                <textarea class="form-control" id="message" name="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
                                 <label for="message">Message</label>
                                 <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
                             </div>
@@ -180,7 +181,7 @@
                             <!-- an error submitting the form-->
                             <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                             <!-- Submit Button-->
-                            <div class="d-grid"><button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Submit</button></div>
+                            <div class="d-grid"><button class="btn btn-primary btn-xl "  type="submit">Submit</button></div>
                         </form>
                     </div>
                 </div>

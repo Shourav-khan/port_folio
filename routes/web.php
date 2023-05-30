@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\contactFormController;
 use App\Http\Controllers\frontMainPageController;
 use App\Http\Controllers\frontPageController;
 use App\Http\Controllers\portfolioController;
@@ -37,6 +38,8 @@ Route::prefix('admin')->group(function(){
 
 
 });
+
+    Route::post('contact/store',[contactFormController::class,'store'])->name('contact.store');
 
 
 
