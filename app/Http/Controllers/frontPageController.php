@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Frontmain;
+use App\Models\Portfolio;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
@@ -16,9 +17,10 @@ class frontPageController extends Controller
     public function index()
     {
 
+        $portfolio = Portfolio::all();
         $main = Frontmain::first();
         $services = Service::all();
-        return view('pages.frontend',compact('main','services'));
+        return view('pages.frontend',compact('main','services','portfolio'));
     }
 
 
